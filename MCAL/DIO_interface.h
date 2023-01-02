@@ -68,6 +68,7 @@ extern void DIO_Init ();
 extern void DIO_WritePin(DIO_pin_type pin, DIO_pinVoltage_type volt);
 extern void DIO_TogglePin(DIO_pin_type pin);
 extern DIO_pinVoltage_type DIO_ReadPin(DIO_pin_type pin);
+extern DIO_pinVoltage_type DIO_ReadPortRegister(DIO_pin_type pin);
 extern void DIO_WritePORT( Dio_Port_type port,  u8 value);
 extern u8	DIO_ReadPORT( Dio_Port_type port);
 

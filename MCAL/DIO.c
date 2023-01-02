@@ -178,6 +178,32 @@ extern DIO_pinVoltage_type DIO_ReadPin(DIO_pin_type pin)
 {
 	if ( pin >= PINA0 && pin <= PINA7 )
 	{
+		return READ_BIT(PINA, pin);
+	}
+	else if ( pin >= PINB0 && pin <= PINB7 )
+	{
+		pin = pin - PINB0;
+
+		return READ_BIT(PINB, pin);
+	}
+	else if ( pin >= PINC0 && pin <= PINC7 )
+	{
+		pin = pin - PINC0;
+
+		return READ_BIT(PINC, pin);
+	}
+	else if ( pin >= PIND0 && pin <= PIND7 )
+	{
+		pin = pin - PIND0;
+
+		return READ_BIT(PIND, pin);
+	}
+}
+
+extern DIO_pinVoltage_type DIO_ReadPortRegister(DIO_pin_type pin)
+{
+	if ( pin >= PINA0 && pin <= PINA7 )
+	{
 		return READ_BIT(PORTA, pin);
 	}
 	else if ( pin >= PINB0 && pin <= PINB7 )
