@@ -15,7 +15,15 @@ typedef enum{
 	motor5,
 	motor6, 
 	motor7,
-	motor8
+	motor8, 
+	motor9,
+	motor10,
+	motor11,
+	motor12,
+	motor13,
+	motor14,
+	motor15,
+	motor16
 	}MOTOR_type;
 
 //Motor direction is clockWise

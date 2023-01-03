@@ -11,29 +11,51 @@ Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .text          0x00000000        0x0 HAL/BUTTON.o
- .data          0x00000000        0x0 HAL/BUTTON.o
- .bss           0x00000000        0x0 HAL/BUTTON.o
- .text.BUTTON_IsPressed
-                0x00000000       0x62 HAL/BUTTON.o
- .text.BUTTON_IsNotPressed
-                0x00000000       0x62 HAL/BUTTON.o
- .comment       0x00000000       0x31 HAL/BUTTON.o
- .text          0x00000000        0x0 HAL/LED.o
- .data          0x00000000        0x0 HAL/LED.o
- .bss           0x00000000        0x0 HAL/LED.o
- .text.LED_Off  0x00000000        0x6 HAL/LED.o
  .text          0x00000000        0x0 HAL/MOTOR.o
  .data          0x00000000        0x0 HAL/MOTOR.o
  .bss           0x00000000        0x0 HAL/MOTOR.o
+ .text.MOTOR_CW
+                0x00000000       0x30 HAL/MOTOR.o
+ .progmem.gcc_sw_table.MOTOR_CW
+                0x00000000       0x20 HAL/MOTOR.o
+ .text.MOTOR_CCW
+                0x00000000       0x30 HAL/MOTOR.o
+ .progmem.gcc_sw_table.MOTOR_CCW
+                0x00000000       0x10 HAL/MOTOR.o
+ .text.MOTOR_stop
+                0x00000000       0x30 HAL/MOTOR.o
+ .progmem.gcc_sw_table.MOTOR_stop
+                0x00000000       0x10 HAL/MOTOR.o
+ .comment       0x00000000       0x31 HAL/MOTOR.o
+ .text          0x00000000        0x0 HAL/STEPPER.o
+ .data          0x00000000        0x0 HAL/STEPPER.o
+ .bss           0x00000000        0x0 HAL/STEPPER.o
+ .text.STEPPER_Bipolar_CW
+                0x00000000       0xca HAL/STEPPER.o
+ .text.STEPPER_Bipolar_CCW
+                0x00000000       0xca HAL/STEPPER.o
+ .text.STEPPER_unipolar_CW
+                0x00000000       0xca HAL/STEPPER.o
+ .text.STEPPER_unipolar_CCW
+                0x00000000       0xca HAL/STEPPER.o
+ .text.STEPPER_unipolar_HS_CW
+                0x00000000      0x192 HAL/STEPPER.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
  .text          0x00000000        0x0 MCAL/DIO.o
  .data          0x00000000        0x0 MCAL/DIO.o
  .bss           0x00000000        0x0 MCAL/DIO.o
+ .text.DIO_TogglePin
+                0x00000000       0x76 MCAL/DIO.o
+ .text.DIO_ReadPin
+                0x00000000       0x4a MCAL/DIO.o
  .text.DIO_ReadPortRegister
                 0x00000000       0x4a MCAL/DIO.o
+ .text.DIO_WritePORT
+                0x00000000       0x20 MCAL/DIO.o
+ .text.DIO_ReadPORT
+                0x00000000       0x20 MCAL/DIO.o
  .text          0x00000000        0x0 MCAL/DIO_Lcfg.o
  .data          0x00000000        0x0 MCAL/DIO_Lcfg.o
  .bss           0x00000000        0x0 MCAL/DIO_Lcfg.o
@@ -60,6 +82,7 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.div
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+ .text.libgcc   0x00000000        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.prologue
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.builtins
@@ -100,9 +123,8 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-LOAD HAL/BUTTON.o
-LOAD HAL/LED.o
 LOAD HAL/MOTOR.o
+LOAD HAL/STEPPER.o
 LOAD main.o
 LOAD MCAL/DIO.o
 LOAD MCAL/DIO_Lcfg.o
@@ -215,55 +237,49 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x5a2
+.text           0x00000000      0x4d6
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
- .progmem.gcc_sw_table.MOTOR_CW
-                0x00000054       0x10 HAL/MOTOR.o
- .progmem.gcc_sw_table.MOTOR_CCW
-                0x00000064       0x10 HAL/MOTOR.o
- .progmem.gcc_sw_table.MOTOR_stop
-                0x00000074       0x10 HAL/MOTOR.o
-                0x00000084                . = ALIGN (0x2)
-                0x00000084                __trampolines_start = .
+                0x00000054                . = ALIGN (0x2)
+                0x00000054                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000084        0x0 linker stubs
+ .trampolines   0x00000054        0x0 linker stubs
  *(.trampolines*)
-                0x00000084                __trampolines_end = .
+                0x00000054                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x00000084                . = ALIGN (0x2)
+                0x00000054                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000084                __ctors_start = .
+                0x00000054                __ctors_start = .
  *(.ctors)
-                0x00000084                __ctors_end = .
-                0x00000084                __dtors_start = .
+                0x00000054                __ctors_end = .
+                0x00000054                __dtors_start = .
  *(.dtors)
-                0x00000084                __dtors_end = .
+                0x00000054                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000084        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-                0x00000084                __init
+ .init0         0x00000054        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
+                0x00000054                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000084        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
+ .init2         0x00000054        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000090       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                0x00000090                __do_copy_data
+ .init4         0x00000060       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+                0x00000060                __do_copy_data
  *(.init4)
  *(.init5)
  *(.init5)
@@ -274,75 +290,50 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000a6        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
+ .init9         0x00000076        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  *(.init9)
  *(.text)
- .text          0x000000ae        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-                0x000000ae                __vector_1
-                0x000000ae                __vector_12
-                0x000000ae                __bad_interrupt
-                0x000000ae                __vector_6
-                0x000000ae                __vector_3
-                0x000000ae                __vector_11
-                0x000000ae                __vector_13
-                0x000000ae                __vector_17
-                0x000000ae                __vector_19
-                0x000000ae                __vector_7
-                0x000000ae                __vector_5
-                0x000000ae                __vector_4
-                0x000000ae                __vector_9
-                0x000000ae                __vector_2
-                0x000000ae                __vector_15
-                0x000000ae                __vector_8
-                0x000000ae                __vector_14
-                0x000000ae                __vector_10
-                0x000000ae                __vector_16
-                0x000000ae                __vector_18
-                0x000000ae                __vector_20
-                0x000000b2                . = ALIGN (0x2)
+ .text          0x0000007e        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
+                0x0000007e                __vector_1
+                0x0000007e                __vector_12
+                0x0000007e                __bad_interrupt
+                0x0000007e                __vector_6
+                0x0000007e                __vector_3
+                0x0000007e                __vector_11
+                0x0000007e                __vector_13
+                0x0000007e                __vector_17
+                0x0000007e                __vector_19
+                0x0000007e                __vector_7
+                0x0000007e                __vector_5
+                0x0000007e                __vector_4
+                0x0000007e                __vector_9
+                0x0000007e                __vector_2
+                0x0000007e                __vector_15
+                0x0000007e                __vector_8
+                0x0000007e                __vector_14
+                0x0000007e                __vector_10
+                0x0000007e                __vector_16
+                0x0000007e                __vector_18
+                0x0000007e                __vector_20
+                0x00000082                . = ALIGN (0x2)
  *(.text.*)
- .text.LED_On   0x000000b2        0x6 HAL/LED.o
-                0x000000b2                LED_On
- .text.LED_Toggle
-                0x000000b8        0x4 HAL/LED.o
-                0x000000b8                LED_Toggle
- .text.MOTOR_CW
-                0x000000bc       0x30 HAL/MOTOR.o
-                0x000000bc                MOTOR_CW
- .text.MOTOR_CCW
-                0x000000ec       0x30 HAL/MOTOR.o
-                0x000000ec                MOTOR_CCW
- .text.MOTOR_stop
-                0x0000011c       0x30 HAL/MOTOR.o
-                0x0000011c                MOTOR_stop
+ .text.STEPPER_unipolar_HS_CCW
+                0x00000082      0x192 HAL/STEPPER.o
+                0x00000082                STEPPER_unipolar_HS_CCW
  .text.startup.main
-                0x0000014c       0x92 main.o
-                0x0000014c                main
+                0x00000214        0xa main.o
+                0x00000214                main
  .text.DIO_Init
-                0x000001de      0x1be MCAL/DIO.o
-                0x000001de                DIO_Init
+                0x0000021e      0x1be MCAL/DIO.o
+                0x0000021e                DIO_Init
  .text.DIO_WritePin
-                0x0000039c       0xf6 MCAL/DIO.o
-                0x0000039c                DIO_WritePin
- .text.DIO_TogglePin
-                0x00000492       0x76 MCAL/DIO.o
-                0x00000492                DIO_TogglePin
- .text.DIO_ReadPin
-                0x00000508       0x4a MCAL/DIO.o
-                0x00000508                DIO_ReadPin
- .text.DIO_WritePORT
-                0x00000552       0x20 MCAL/DIO.o
-                0x00000552                DIO_WritePORT
- .text.DIO_ReadPORT
-                0x00000572       0x20 MCAL/DIO.o
-                0x00000572                DIO_ReadPORT
- .text.libgcc   0x00000592        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x00000592                __tablejump2__
-                0x0000059e                . = ALIGN (0x2)
+                0x000003dc       0xf6 MCAL/DIO.o
+                0x000003dc                DIO_WritePin
+                0x000004d2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000059e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000059e                _exit
-                0x0000059e                exit
+ .fini9         0x000004d2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000004d2                _exit
+                0x000004d2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -361,11 +352,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000059e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000004d2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000005a2                _etext = .
+                0x000004d6                _etext = .
 
-.data           0x00800060       0x20 load address 0x000005a2
+.data           0x00800060       0x20 load address 0x000004d6
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -386,8 +377,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x000005a2                __data_load_start = LOADADDR (.data)
-                0x000005c2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000004d6                __data_load_start = LOADADDR (.data)
+                0x000004f6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800080        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -435,9 +426,8 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 HAL/LED.o
+ .comment       0x00000000       0x30 HAL/STEPPER.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 HAL/MOTOR.o
  .comment       0x00000030       0x31 main.o
  .comment       0x00000030       0x31 MCAL/DIO.o
  .comment       0x00000030       0x31 MCAL/DIO_Lcfg.o

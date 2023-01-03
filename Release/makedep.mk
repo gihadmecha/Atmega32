@@ -2,11 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-HAL\BUTTON.c
-
-HAL\LED.c
-
 HAL\MOTOR.c
+
+HAL\STEPPER.c
 
 main.c
 

@@ -38,6 +38,38 @@ extern void MOTOR_CW (MOTOR_type motor)
 		DIO_WritePin( M8_IN1, HIGH);
 		DIO_WritePin( M8_IN2, LOW);
 		break;
+		case motor9:
+		DIO_WritePin( M9_IN1, HIGH);
+		DIO_WritePin( M9_IN2, LOW);
+		break;
+		case motor10:
+		DIO_WritePin( M10_IN1, HIGH);
+		DIO_WritePin( M10_IN2, LOW);
+		break;
+		case motor11:
+		DIO_WritePin( M11_IN1, HIGH);
+		DIO_WritePin( M11_IN2, LOW);
+		break;
+		case motor12:
+		DIO_WritePin( M12_IN1, HIGH);
+		DIO_WritePin( M12_IN2, LOW);
+		break;
+		case motor13:
+		DIO_WritePin( M13_IN1, HIGH);
+		DIO_WritePin( M13_IN2, LOW);
+		break;
+		case motor14:
+		DIO_WritePin( M14_IN1, HIGH);
+		DIO_WritePin( M14_IN2, LOW);
+		break;
+		case motor15:
+		DIO_WritePin( M15_IN1, HIGH);
+		DIO_WritePin( M15_IN2, LOW);
+		break;
+		case motor16:
+		DIO_WritePin( M16_IN1, HIGH);
+		DIO_WritePin( M16_IN2, LOW);
+		break;
 	}
 }
 

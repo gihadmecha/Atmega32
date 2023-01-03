@@ -28,5 +28,29 @@
 #define		M8_IN1      PINB0
 #define		M8_IN2      PINB0
 
+#define		M9_IN1      PINB0
+#define		M9_IN2      PINB0
+
+#define		M10_IN1      PINB0
+#define		M10_IN2      PINB0
+
+#define		M11_IN1      PINB0
+#define		M11_IN2      PINB0
+
+#define		M12_IN1      PINB0
+#define		M12_IN2      PINB0
+
+#define		M13_IN1      PINB0
+#define		M13_IN2      PINB0
+
+#define		M14_IN1      PINB0
+#define		M14_IN2      PINB0
+
+#define		M15_IN1      PINB0
+#define		M15_IN2      PINB0
+
+#define		M16_IN1      PINB0
+#define		M16_IN2      PINB0
+
 
 #endif /* MOTOR_LCFG_H_ */

@@ -129,21 +129,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="APPLICATION\APP1_interface.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL\BUTTON.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL\BUTTON.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL\LED.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL\LED.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="HAL\MOTOR.c">
       <SubType>compile</SubType>
     </Compile>
@@ -151,6 +136,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\MOTOR_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\STEPPER.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\STEPPER.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
