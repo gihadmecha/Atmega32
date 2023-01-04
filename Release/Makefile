@@ -41,7 +41,11 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../APPLICATION/segmentsTest.c \
+../APPLICATION/stepperTest.c \
 ../HAL/MOTOR.c \
+../HAL/SEGMENTS.c \
+../HAL/SEGMENTS_Lcfg.c \
 ../HAL/STEPPER.c \
 ../main.c \
 ../MCAL/DIO.c \
@@ -55,28 +59,44 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+APPLICATION/segmentsTest.o \
+APPLICATION/stepperTest.o \
 HAL/MOTOR.o \
+HAL/SEGMENTS.o \
+HAL/SEGMENTS_Lcfg.o \
 HAL/STEPPER.o \
 main.o \
 MCAL/DIO.o \
 MCAL/DIO_Lcfg.o
 
 OBJS_AS_ARGS +=  \
+APPLICATION/segmentsTest.o \
+APPLICATION/stepperTest.o \
 HAL/MOTOR.o \
+HAL/SEGMENTS.o \
+HAL/SEGMENTS_Lcfg.o \
 HAL/STEPPER.o \
 main.o \
 MCAL/DIO.o \
 MCAL/DIO_Lcfg.o
 
 C_DEPS +=  \
+APPLICATION/segmentsTest.d \
+APPLICATION/stepperTest.d \
 HAL/MOTOR.d \
+HAL/SEGMENTS.d \
+HAL/SEGMENTS_Lcfg.d \
 HAL/STEPPER.d \
 main.d \
 MCAL/DIO.d \
 MCAL/DIO_Lcfg.d
 
 C_DEPS_AS_ARGS +=  \
+APPLICATION/segmentsTest.d \
+APPLICATION/stepperTest.d \
 HAL/MOTOR.d \
+HAL/SEGMENTS.d \
+HAL/SEGMENTS_Lcfg.d \
 HAL/STEPPER.d \
 main.d \
 MCAL/DIO.d \
@@ -96,7 +116,35 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+APPLICATION/segmentsTest.o: ../APPLICATION/segmentsTest.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+APPLICATION/stepperTest.o: ../APPLICATION/stepperTest.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 HAL/MOTOR.o: ../HAL/MOTOR.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SEGMENTS.o: ../HAL/SEGMENTS.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SEGMENTS_Lcfg.o: ../HAL/SEGMENTS_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

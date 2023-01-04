@@ -129,6 +129,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APPLICATION\segmentsTest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\stepperTest.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\MOTOR.c">
       <SubType>compile</SubType>
     </Compile>
@@ -136,6 +142,21 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\MOTOR_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SEGMENTS.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SEGMENTS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SEGMENTS_Lcfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SEGMENTS_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SEGMENTS_Private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\STEPPER.c">

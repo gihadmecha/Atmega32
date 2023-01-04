@@ -2,7 +2,15 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+APPLICATION\segmentsTest.c
+
+APPLICATION\stepperTest.c
+
 HAL\MOTOR.c
+
+HAL\SEGMENTS.c
+
+HAL\SEGMENTS_Lcfg.c
 
 HAL\STEPPER.c
 
