@@ -6,15 +6,6 @@
 #include "DIO_interface.h"
 #include "SEGMENTS_Lcfg.h"
 
-extern void SEGMENTS_digitDisplay (u8 number);
-extern void SEGMENTS_digitDisplayHex (u8 number);
-extern void SEGMENTS_digitCounter ();
-
-extern void SEGMENTS_2digitDisplay (u16 number);
-extern void SEGMENTS_2digitCounter ();
-
-extern void SEGMENTS_BCD_digitDisplay (u8 number);
-
 typedef enum{
 	a = 10,
 	A = 10,
@@ -28,11 +19,24 @@ typedef enum{
 	E = 14,
 	f = 15,
 	F = 15
-	}SEGMENT_hex_type;
+}SEGMENT_hex_type;
 
 
+extern void SEGMENTS_digitDisplay (u8 number);
+extern void SEGMENTS_faresKit_digitDisplay (u8 number);
+extern void SEGMENTS__anode_digitDisplay (u8 number);
+extern void SEGMENTS_digitDisplayHex (u8 number);
+extern void SEGMENTS_digitCounter ();
 
+extern void SEGMENTS_2digitDisplay (u16 number);
+extern void SEGMENTS_2digitCounter ();
 
+extern void SEGMENTS_BCD_digitDisplay (u8 number);
+
+extern void SEGMENTS_BCD_2digitCounter ();
+
+extern void SEGMENTS_MUX_2digitDisplay (u16 number);
+extern void SEGMENTS_MUX_faresKit_2digitDisplay (u16 number);
 
 
 #endif /* SEGMENTS_H_ */

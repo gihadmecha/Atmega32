@@ -6,7 +6,7 @@
 
 #include "SEGMENTS.h"
 
-void segmentsTest ();
+extern void segmentsTest ();
 
 
 
