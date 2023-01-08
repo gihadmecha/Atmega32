@@ -1,8 +1,15 @@
 
 
-#include "segmentsTest.h"
+#include "motorTest.h"
+
+
 
 int main()
 {
-	segmentsTest ();
+	
+	
+	
+	motorTest ();
+	
+	
 }

@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+APPLICATION\motorTest.c
+
 APPLICATION\segmentsTest.c
 
 APPLICATION\stepperTest.c

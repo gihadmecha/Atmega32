@@ -129,6 +129,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APPLICATION\motorTest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\motorTest.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APPLICATION\segmentsTest.c">
       <SubType>compile</SubType>
     </Compile>

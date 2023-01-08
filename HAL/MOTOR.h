@@ -7,32 +7,15 @@
 #include "DIO_interface.h"
 #include "MOTOR_Lcfg.h"
 
-typedef enum{
-	motor1 = 1,
-	motor2,
-	motor3,
-	motor4,
-	motor5,
-	motor6, 
-	motor7,
-	motor8, 
-	motor9,
-	motor10,
-	motor11,
-	motor12,
-	motor13,
-	motor14,
-	motor15,
-	motor16
-	}MOTOR_type;
+
 
 //Motor direction is clockWise
-extern void MOTOR_CW (MOTOR_type motor);
+extern void MOTOR1_CW ();
 
 //Motor direction is counterClockWise
-extern void MOTOR_CCW (MOTOR_type motor);
+extern void MOTOR1_CCW ();
 
-extern void MOTOR_stop (MOTOR_type motor);
+extern void MOTOR1_stop ();
 
 
 

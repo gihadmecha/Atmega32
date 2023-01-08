@@ -41,6 +41,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../APPLICATION/motorTest.c \
 ../APPLICATION/segmentsTest.c \
 ../APPLICATION/stepperTest.c \
 ../HAL/MOTOR.c \
@@ -59,6 +60,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+APPLICATION/motorTest.o \
 APPLICATION/segmentsTest.o \
 APPLICATION/stepperTest.o \
 HAL/MOTOR.o \
@@ -70,6 +72,7 @@ MCAL/DIO.o \
 MCAL/DIO_Lcfg.o
 
 OBJS_AS_ARGS +=  \
+APPLICATION/motorTest.o \
 APPLICATION/segmentsTest.o \
 APPLICATION/stepperTest.o \
 HAL/MOTOR.o \
@@ -81,6 +84,7 @@ MCAL/DIO.o \
 MCAL/DIO_Lcfg.o
 
 C_DEPS +=  \
+APPLICATION/motorTest.d \
 APPLICATION/segmentsTest.d \
 APPLICATION/stepperTest.d \
 HAL/MOTOR.d \
@@ -92,6 +96,7 @@ MCAL/DIO.d \
 MCAL/DIO_Lcfg.d
 
 C_DEPS_AS_ARGS +=  \
+APPLICATION/motorTest.d \
 APPLICATION/segmentsTest.d \
 APPLICATION/stepperTest.d \
 HAL/MOTOR.d \
@@ -116,6 +121,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+APPLICATION/motorTest.o: ../APPLICATION/motorTest.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 APPLICATION/segmentsTest.o: ../APPLICATION/segmentsTest.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
