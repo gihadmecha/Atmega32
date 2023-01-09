@@ -1,6 +1,6 @@
 
 
-#include "motorTest.h"
+#include "keypadTest.h"
 
 
 
@@ -9,7 +9,7 @@ int main()
 	
 	
 	
-	motorTest ();
+	keypadTest ();
 	
 	
 }

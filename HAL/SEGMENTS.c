@@ -98,15 +98,15 @@ extern void SEGMENTS_MUX_2digitDisplay (u16 number)
 	{
 		u8 digit2 = (number / 10) % 10 ;
 		
-		DIO_WritePin(PINA7, HIGH);
-		DIO_WritePin(PINA6, LOW);
-		DIO_WritePORT( SEG_PORT4,  cathodeSegmentsHexCode[number % 10] );
-		_delay_ms(10);
-		DIO_WritePin(PINA6, HIGH);
-		DIO_WritePin(PINA7, LOW);
-		DIO_WritePORT( SEG_PORT4,  cathodeSegmentsHexCode[digit2] );
-		_delay_ms(10);
-
+		DIO_WritePin(MUX_2DIGITDISPLAY2, HIGH);
+		DIO_WritePin(MUX_2DIGITDISPLAY1, LOW);
+		DIO_WritePORT( MUX_2DIGITDISPLAY,  cathodeSegmentsHexCode[number % 10] );
+		_delay_ms(1);
+		DIO_WritePin(MUX_2DIGITDISPLAY1, HIGH);
+		DIO_WritePin(MUX_2DIGITDISPLAY2, LOW);
+		DIO_WritePORT( MUX_2DIGITDISPLAY,  cathodeSegmentsHexCode[digit2] );
+		_delay_ms(1);
+		DIO_WritePin(MUX_2DIGITDISPLAY2, HIGH);
 	}
 }
 

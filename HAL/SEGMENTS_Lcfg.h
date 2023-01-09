@@ -8,5 +8,9 @@
 #define		SEG_PORT3	PA
 #define		SEG_PORT4	PB
 
+#define		MUX_2DIGITDISPLAY	PA
+#define		MUX_2DIGITDISPLAY1	PINB1
+#define		MUX_2DIGITDISPLAY2	PINB0
+
 
 #endif /* SEGMENTS_LCFG_H_ */

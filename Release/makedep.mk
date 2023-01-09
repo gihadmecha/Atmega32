@@ -2,11 +2,15 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+APPLICATION\keypadTest.c
+
 APPLICATION\motorTest.c
 
 APPLICATION\segmentsTest.c
 
 APPLICATION\stepperTest.c
+
+HAL\KEYPAD.c
 
 HAL\MOTOR.c
 

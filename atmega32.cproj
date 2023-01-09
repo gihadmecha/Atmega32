@@ -129,6 +129,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APPLICATION\keypadTest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\keypadTest.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APPLICATION\motorTest.c">
       <SubType>compile</SubType>
     </Compile>
@@ -139,6 +145,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="APPLICATION\stepperTest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KEYPAD.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KEYPAD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KEYPAD_Lcfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\MOTOR.c">
