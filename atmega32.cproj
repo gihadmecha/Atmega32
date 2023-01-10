@@ -135,6 +135,12 @@
     <Compile Include="APPLICATION\keypadTest.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APPLICATION\LCDTest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\LCDTest.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APPLICATION\motorTest.c">
       <SubType>compile</SubType>
     </Compile>
@@ -154,6 +160,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\KEYPAD_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Lcfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\MOTOR.c">

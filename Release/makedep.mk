@@ -4,6 +4,8 @@
 
 APPLICATION\keypadTest.c
 
+APPLICATION\LCDTest.c
+
 APPLICATION\motorTest.c
 
 APPLICATION\segmentsTest.c
@@ -11,6 +13,8 @@ APPLICATION\segmentsTest.c
 APPLICATION\stepperTest.c
 
 HAL\KEYPAD.c
+
+HAL\LCD.c
 
 HAL\MOTOR.c
 

@@ -1,6 +1,6 @@
 
 
-#include "keypadTest.h"
+#include "LCDTest.h"
 
 
 
@@ -9,7 +9,7 @@ int main()
 	
 	
 	
-	keypadTest ();
+	LCDTest ();
 	
 	
 }
