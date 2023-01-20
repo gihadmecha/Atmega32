@@ -10,8 +10,11 @@ extern void LCD_Init ();
 extern void LCD_Clear ();
 extern void LCD_WriteChar ( u8 character);
 extern void LCD_WriteString ( u8* str);
-extern void LCD_WriteNumber ( u32 number);
-
-
+extern void LCD_WriteNumber ( double number);
+extern void LCD_WriteNumber_4Digit ( int number);
+extern void LCD_WriteBinary (u8 number);
+extern void LCD_WriteHex1 (u8 number);
+extern void LCD_WriteHex2 (u8 number);
+extern void LCD_GoTo ( u8 line, u8 digit);
 
 #endif /* LCD_H_ */

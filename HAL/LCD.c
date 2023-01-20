@@ -115,6 +115,22 @@ extern void LCD_Init()
 	LCD_WriteCommand(0x06); //increase DDRAM address, no shift
 }
 
+extern void LCD_GoTo ( u8 line, u8 digit)
+{
+	if (line == 0)
+	{
+		//from 2*16 LCD datasheet: 0x00 is the address of the first digit in the first line
+		//LCD_WriteCommand(0x80 + 0x00 + digit);
+		LCD_WriteCommand(0x80 | 0x00 | digit);
+	}
+	else if (line == 1)
+	{
+		//from 2*16 LCD datasheet: 0x40 is the address of the first digit in the second line
+		//LCD_WriteCommand(0x80 + 0x45 + digit);
+		LCD_WriteCommand(0x80 | 0x40 | digit);
+	}
+}
+
 /*******************************************************************************************************/
 
 
@@ -125,38 +141,207 @@ extern void LCD_WriteChar ( u8 character)
 
 extern void LCD_WriteString ( u8* str)
 {
-	for (unsigned index = 0; str[index]; index++)
+	for (unsigned int index = 0; str[index]; index++)
 	{
 		LCD_WriteData (str[index]);
 	}
 }
 
-//static u8* LCD_numberToSring (u32 number, u8* numberString)
-//{
-	//u8 index = 0;
-	//
-	//if (number < 0)
-	//{
-		//numberString[index] = '-';
-		//index++;
-		//number = -number;
-	//}
-	//
-	//if (number != 0)
-	//{
-		//while (number > 0)
-		//{
-			//number = number / 10;
-		//}
-	//}
-	//else
-	//{
-		//
-	//}
-//}
-//
-//extern void LCD_WriteNumber ( u32 number)
-//{
-	//u8 numberString[20];
-	//LCD_WriteString ( numberString);
-//}
+static u8 LCD_stringLength (u8* str)
+{
+	unsigned int index;
+	for (index = 0; str[index]; index++);
+	return index;
+}
+
+static void LCD_swapChar (u8* character1, u8* character2)
+{
+	u8 temperoryChar = *character1;
+	*character1 = *character2;
+	*character2 = temperoryChar;
+}
+
+static void LCD_stringReverse (u8* str)
+{
+	unsigned int stringLength = LCD_stringLength(str);
+	for (unsigned int index = 0; index < (stringLength)/2; index++)
+	{
+		LCD_swapChar(str + index, str + stringLength - index-1);
+	}
+}
+static void LCD_numberToSring (double number, u8* numberString)
+{
+	u8 index = 0;
+	signed char dotFlag = 0;
+	u8 digit;
+	
+	if (numberString == NULLPTR)
+		return;
+	
+	
+	if (number == 0)
+	{
+		numberString[index] = '0';
+		index++;
+	}
+	
+	//if number is negative, let it positive
+	if (number < 0)
+	{
+		numberString[index] = '-';
+		index++;
+		dotFlag++;
+		number = -number;
+	}
+	
+	while (number >= 1)
+	{
+		number = number / 10;
+		dotFlag++;
+	}
+	
+	//store the number digits as characters in numberString array
+	while (number != (int)number)
+	{
+		numberString[dotFlag] = '.';
+		
+		number = number * 10;
+		
+		digit = '0' + (int)number % 10;
+		
+		if (index != dotFlag)
+		{
+			numberString[index] = digit;
+			index++;
+		}
+		else
+		{
+			index++;
+			numberString[index] = digit;
+			index++;
+		}
+	}
+	
+	//the end of numberString
+	numberString[index] = NULL;
+}
+
+static void LCD_intToSring ( int number, u8* numberString)
+{
+	u8 index = 0;
+	u8 digit;
+	
+	if (numberString == NULLPTR)
+	return;
+	
+	
+	if (number == 0)
+	{
+		numberString[index] = '0';
+		index++;
+	}
+	
+	//if number is negative, let it positive
+	if (number < 0)
+	{
+		numberString[index] = '-';
+		index++;
+		number = -number;
+	}
+	
+	//store the number digits as characters in numberString array
+	while (number != 0)
+	{
+		digit = '0' + number % 10;
+	
+		numberString[index] = digit;
+		index++;
+		
+		number = number / 10; 
+	}
+	
+	//the end of numberString
+	numberString[index] = NULL;
+}
+
+extern void LCD_WriteNumber ( double number)
+{
+	u8 numberString[20];
+	//LCD_numberToSring ( number, numberString);
+	LCD_intToSring ( number, numberString);
+	LCD_stringReverse(numberString);
+	LCD_WriteString ( numberString);
+}
+
+extern void LCD_WriteNumber_4Digit ( int number)
+{
+	LCD_WriteChar('0' + (number / 1000)%10);
+	LCD_WriteChar('0' + (number / 100)%10);
+	LCD_WriteChar('0' + (number / 10)%10);
+	LCD_WriteChar('0' + (number %10));
+}
+
+extern void LCD_WriteBinary (u8 number)
+{
+	u8 oneFlag = 0;
+	
+	for (s8 index = 7; index >= 0; index--)
+	{
+		//LCD_WriteNumber( (number >> index) & 1 );
+		
+		if (((number >> index) & 1))
+		{
+			LCD_WriteChar('1');
+			oneFlag = 1;
+		}
+		else if (oneFlag == 1)
+		{
+			LCD_WriteChar('0');
+		}
+	}
+}
+
+extern void LCD_WriteHex1 (u8 number)
+{
+	double leftDigit;
+	double rightDigit;
+	
+	leftDigit = number>>4;
+	rightDigit = number & 0b00001111;
+	
+	LCD_WriteString("0X");
+	
+	if (leftDigit <= 9)
+	LCD_WriteChar( leftDigit + '0');
+	else
+	LCD_WriteChar( (leftDigit - 10) + 'A');
+	
+	if (rightDigit <= 9)
+	LCD_WriteChar( rightDigit + '0');
+	else
+	LCD_WriteChar( (rightDigit - 10) + 'A');
+}
+
+extern void LCD_WriteHex2 (u8 number)
+{
+	u8 digit = number;
+	u8 digitString[3];
+	
+	LCD_WriteString("0X");
+	
+	for (signed int index = 1; index >= 0; index--)
+	{
+		digit = number - (int)(number/16)*16;
+		
+		if (digit <= 9)
+		digitString[index] = '0' + digit;
+		else
+		digitString[index] = 'A' + (digit-10);
+		
+		number = (int)(number/16);
+	}
+	digitString[2] = NULL;
+	
+	LCD_WriteString(digitString);
+}
+
