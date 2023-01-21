@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+APPLICATION\ADCTest.c
+
 APPLICATION\keypadTest.c
 
 APPLICATION\LCDTest.c
@@ -25,6 +27,8 @@ HAL\SEGMENTS_Lcfg.c
 HAL\STEPPER.c
 
 main.c
+
+MCAL\ADC.c
 
 MCAL\DIO.c
 

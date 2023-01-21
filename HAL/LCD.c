@@ -70,6 +70,7 @@ extern void LCD_Init()
 	////  = 0 = don't display cursor
 	////B = 1 = cursor blinking at 0.4 sec intervals
 	////    0 = don't blink cursor
+	//DIO_WritePORT(LCD_PORT, 0b0000DCB0);
 	//DIO_WritePORT(LCD_PORT, 0b00001110);
 	//
 	////trigger
@@ -78,7 +79,7 @@ extern void LCD_Init()
 	//DIO_WritePin(LCD_EN, LOW);
 	//
 	//_delay_us(40);
-	LCD_WriteCommand(0x0F); // cursor, try 0x0E, 0x0C
+	LCD_WriteCommand(0x0C); // cursor, try 0x0F, 0x0E
 	
 	////Display clear
 	//// to write command

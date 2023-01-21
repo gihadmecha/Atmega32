@@ -9,7 +9,7 @@ int main()
 	
 	
 	
-	LCDTest ();
+	ADCTest ();
 	
 	
 }

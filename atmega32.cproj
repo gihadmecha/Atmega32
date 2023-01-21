@@ -129,6 +129,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APPLICATION\ADCTest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\ADCTest.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APPLICATION\keypadTest.c">
       <SubType>compile</SubType>
     </Compile>
@@ -202,6 +208,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Lcfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO.c">
