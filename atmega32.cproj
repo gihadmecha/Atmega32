@@ -177,6 +177,15 @@
     <Compile Include="HAL\LCD_Lcfg.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\LM35.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LM35.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LM35_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\MOTOR.c">
       <SubType>compile</SubType>
     </Compile>
@@ -184,6 +193,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\MOTOR_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\POTENIOMETER.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\POTENIOMETER.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\POTENIOMETER_Lcfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\SEGMENTS.c">

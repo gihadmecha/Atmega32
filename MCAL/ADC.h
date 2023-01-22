@@ -43,7 +43,9 @@ typedef enum{
 extern void ADC_Init (ADC_Vref_type , ADC_Scaler_type , ADC_Accuracy_type accuracy);
 extern void ADC_Enable();
 extern void ADC_Disable();
-extern u16 ADC_Read (ADC_Channel_type );
+extern void ADC_startConversion (ADC_Channel_type channel);
+extern u16 ADC_Read_polling (ADC_Channel_type );
+extern u8 ADC_Read_periodCheck (u16* pdata);
 extern signed int ADC_GetVolt(ADC_Channel_type channel);
 
 

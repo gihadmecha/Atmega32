@@ -7,7 +7,8 @@ APPLICATION/ADCTest.d APPLICATION/ADCTest.o: ../APPLICATION/ADCTest.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../HAL/LCD_Lcfg.h
+ ../HAL/LCD_Lcfg.h ../HAL/LM35.h ../HAL/LM35_Lcfg.h ../HAL/POTENIOMETER.h \
+ ../HAL/POTENIOMETER_Lcfg.h
 
 ../APPLICATION/ADCTest.h:
 
@@ -38,3 +39,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
 ../HAL/LCD_Lcfg.h:
+
+../HAL/LM35.h:
+
+../HAL/LM35_Lcfg.h:
+
+../HAL/POTENIOMETER.h:
+
+../HAL/POTENIOMETER_Lcfg.h:

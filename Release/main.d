@@ -1,4 +1,5 @@
-main.d main.o: .././main.c ../APPLICATION/LCDTest.h ../HAL/LCD.h \
+main.d main.o: .././main.c ../APPLICATION/ADCTest.h ../MCAL/ADC.h \
+ ../MemMap.h ../UTILS.h ../StdTypes.h ../MCAL/ADC_Lcfg.h ../HAL/LCD.h \
  ../MCAL/DIO_interface.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -6,9 +7,20 @@ main.d main.o: .././main.c ../APPLICATION/LCDTest.h ../HAL/LCD.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../StdTypes.h ../MemMap.h ../UTILS.h ../HAL/LCD_Lcfg.h
+ ../HAL/LCD_Lcfg.h ../HAL/LM35.h ../HAL/LM35_Lcfg.h ../HAL/POTENIOMETER.h \
+ ../HAL/POTENIOMETER_Lcfg.h
 
-../APPLICATION/LCDTest.h:
+../APPLICATION/ADCTest.h:
+
+../MCAL/ADC.h:
+
+../MemMap.h:
+
+../UTILS.h:
+
+../StdTypes.h:
+
+../MCAL/ADC_Lcfg.h:
 
 ../HAL/LCD.h:
 
@@ -26,10 +38,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-../StdTypes.h:
-
-../MemMap.h:
-
-../UTILS.h:
-
 ../HAL/LCD_Lcfg.h:
+
+../HAL/LM35.h:
+
+../HAL/LM35_Lcfg.h:
+
+../HAL/POTENIOMETER.h:
+
+../HAL/POTENIOMETER_Lcfg.h:

@@ -49,7 +49,9 @@ C_SRCS +=  \
 ../APPLICATION/stepperTest.c \
 ../HAL/KEYPAD.c \
 ../HAL/LCD.c \
+../HAL/LM35.c \
 ../HAL/MOTOR.c \
+../HAL/POTENIOMETER.c \
 ../HAL/SEGMENTS.c \
 ../HAL/SEGMENTS_Lcfg.c \
 ../HAL/STEPPER.c \
@@ -74,7 +76,9 @@ APPLICATION/segmentsTest.o \
 APPLICATION/stepperTest.o \
 HAL/KEYPAD.o \
 HAL/LCD.o \
+HAL/LM35.o \
 HAL/MOTOR.o \
+HAL/POTENIOMETER.o \
 HAL/SEGMENTS.o \
 HAL/SEGMENTS_Lcfg.o \
 HAL/STEPPER.o \
@@ -92,7 +96,9 @@ APPLICATION/segmentsTest.o \
 APPLICATION/stepperTest.o \
 HAL/KEYPAD.o \
 HAL/LCD.o \
+HAL/LM35.o \
 HAL/MOTOR.o \
+HAL/POTENIOMETER.o \
 HAL/SEGMENTS.o \
 HAL/SEGMENTS_Lcfg.o \
 HAL/STEPPER.o \
@@ -110,7 +116,9 @@ APPLICATION/segmentsTest.d \
 APPLICATION/stepperTest.d \
 HAL/KEYPAD.d \
 HAL/LCD.d \
+HAL/LM35.d \
 HAL/MOTOR.d \
+HAL/POTENIOMETER.d \
 HAL/SEGMENTS.d \
 HAL/SEGMENTS_Lcfg.d \
 HAL/STEPPER.d \
@@ -128,7 +136,9 @@ APPLICATION/segmentsTest.d \
 APPLICATION/stepperTest.d \
 HAL/KEYPAD.d \
 HAL/LCD.d \
+HAL/LM35.d \
 HAL/MOTOR.d \
+HAL/POTENIOMETER.d \
 HAL/SEGMENTS.d \
 HAL/SEGMENTS_Lcfg.d \
 HAL/STEPPER.d \
@@ -207,7 +217,21 @@ HAL/LCD.o: ../HAL/LCD.c
 	@echo Finished building: $<
 	
 
+HAL/LM35.o: ../HAL/LM35.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 HAL/MOTOR.o: ../HAL/MOTOR.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/POTENIOMETER.o: ../HAL/POTENIOMETER.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

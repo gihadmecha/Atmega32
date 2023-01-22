@@ -86,7 +86,26 @@ extern void ADC_Disable()
 	CLR_BIT(ADCSRA, ADEN);
 }
 
-extern u16 ADC_Read (ADC_Channel_type channel)
+
+static u8 readFlag = 1;
+
+extern void ADC_startConversion (ADC_Channel_type channel)
+{
+	if (readFlag == 1)
+	{
+		//select channel
+		//mask
+		channel = channel & 0b00011111;
+		ADCMUX = (ADCMUX & 0b11100000) | channel;
+		
+		//start conversion
+		SET_BIT(ADCSRA, ADSC);
+		
+		readFlag = 0;
+	}
+}
+
+extern u16 ADC_Read_polling (ADC_Channel_type channel)
 {
 	//select channel
 	//mask
@@ -106,8 +125,42 @@ extern u16 ADC_Read (ADC_Channel_type channel)
 	//return ADCH<<2;
 }
 
+extern u16 ADC_Read_polling2 ()
+{
+	while (READ_BIT(ADCSRA, ADSC)); // polling .. busy wait
+	
+	//READING
+	//from atmega32 datasheet: if ADLAR = 0
+	//return ( *((unsigned short* )&ADCL) );
+	return ADC;
+		
+	//adjusted left: from atmega32 datasheet: if ADLAR = 1
+	//return ADCH<<2;
+}
+
+extern u8 ADC_Read_periodCheck (u16* pdata)
+{
+	if (READ_BIT(ADCSRA, ADSC) == 0)
+	{
+		//READING
+		//from atmega32 datasheet: if ADLAR = 0
+		//return ( *((unsigned short* )&ADCL) );
+		*pdata = ADC;
+		readFlag = 1;
+		return 1;
+		
+		//adjusted left: from atmega32 datasheet: if ADLAR = 1
+		//return ADCH<<2;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 extern signed int ADC_GetVolt(ADC_Channel_type channel)
 {
-	u16 read = ADC_Read(channel);
-	return ( (read * VREF) / 1024);
+	u16 read = ADC_Read_polling(channel);
+	//note atmega32 int = 2 bytes = u16 !!
+	return ( ( (u32)read * VREF ) / 1024);
 }
