@@ -23,7 +23,6 @@
 #define		PIND	( *(volatile unsigned char* )0x30)
 
 
-
 /***********************************ADC****************************************/
 
 #define	    ADCMUX	( *(volatile unsigned char* )0x27)	
@@ -45,6 +44,42 @@
 #define	    ADCL	( *(volatile unsigned char* )0x24)
 #define	    ADC  	( *(volatile unsigned short* )0x24)
 
+/***********************************EXI********************************************/
+
+#define		MCUCR		( *(volatile unsigned short* )0x55)
+#define		ISC11		3
+#define		ISC10		2
+#define		ISC01		1
+#define		ISC00		0
+
+#define		MCUCSR		( *(volatile unsigned short* )0x54)
+#define		ISC2		6
+
+#define		GICR		( *(volatile unsigned short* )0x5B)
+#define		INT0		6
+#define		INT1		7
+#define		INT2		5
+
+#define		GIFR		( *(volatile unsigned short* )0x5A)
+#define		INTF0		6
+#define		INTF1		7
+#define		INTF2		5
+
+
+/******************************VECTOR_TABLE**************************************/
+
+#define		ADC_VECTOR		__vector_17
+#define		INT0_VECTOR		__Vector_2
+#define		INT1_VECTOR		__Vector_3
+#define		INT2_VECTOR		__Vector_4
+
+
+/******************************INTERRUPPT_ATTRRIBUTES****************************************/
+
+#define		ISR(vector)		void vector (void) __attribute__((signal));\
+							void vector (void)
+				
+#define		sei()			__asm__ __volatile__ ("sei" ::)
 
 
 #endif /* MEMMAP_H_ */

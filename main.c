@@ -1,6 +1,6 @@
 
 
-#include "ADCTest.h"
+#include "EXITest.h"
 
 
 
@@ -9,7 +9,7 @@ int main()
 	
 	
 	
-	ADCTest ();
+	EXITest ();
 	
 	
 }

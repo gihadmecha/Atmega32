@@ -46,6 +46,8 @@ extern void ADC_Disable();
 extern void ADC_startConversion (ADC_Channel_type channel);
 extern u16 ADC_Read_polling (ADC_Channel_type );
 extern u8 ADC_Read_periodCheck (u16* pdata);
+extern void ADC_interruptEnable (void);
+extern u16 ADC_Read_interrupt ();
 extern signed int ADC_GetVolt(ADC_Channel_type channel);
 
 

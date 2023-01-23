@@ -5,7 +5,9 @@ extern void ADCTest()
 {
 	DIO_Init();
 	ADC_Init( ADC_AVCC, ADC_SCALER_64, ADC_HIGHACCURACY);
+	sei();
 	ADC_Enable();
+	ADC_interruptEnable();
 	LCD_Init();
 	//LCD_WriteString("adc");
 	int read = 0;
@@ -18,6 +20,7 @@ extern void ADCTest()
 	
 	while(1)
 	{
+		ADC_startConversion(ADC_CHANNEL7);
 		//read = ADC_Read(ADC_CHANNEL7);
 		//LCD_GoTo(1,7);
 		//LCD_WriteNumber_4Digit(read);
@@ -37,14 +40,15 @@ extern void ADCTest()
 		//LCD_WriteNumber(LM35/10);
 		//LCD_WriteChar('.');
 		//LCD_WriteNumber(LM35%10);
-		ADC_startConversion(ADC_CHANNEL7);
-		volt = ADC_GetVolt(ADC_CHANNEL7);
-		if (ADC_Read_periodCheck(&read))
-		{
-			
-		}
-		presentage = POTENIOMETER_GetPresentage();
-		LCD_GoTo(0,7);
-		LCD_WriteNumber_4Digit(presentage);
+		//ADC_startConversion(ADC_CHANNEL7);
+		//volt = ADC_GetVolt(ADC_CHANNEL7);
+		//if (ADC_Read_periodCheck(&read))
+		//{
+			//
+		//}
+		//presentage = POTENIOMETER_GetPresentage();
+		//LCD_GoTo(0,7);
+		//LCD_WriteNumber_4Digit(presentage);
 	}
 }
+

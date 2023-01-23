@@ -135,6 +135,12 @@
     <Compile Include="APPLICATION\ADCTest.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APPLICATION\EXITest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\EXITest.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APPLICATION\keypadTest.c">
       <SubType>compile</SubType>
     </Compile>
@@ -250,6 +256,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXI.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXI_Lcfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MemMap.h">

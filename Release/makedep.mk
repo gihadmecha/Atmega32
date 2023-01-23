@@ -4,6 +4,8 @@
 
 APPLICATION\ADCTest.c
 
+APPLICATION\EXITest.c
+
 APPLICATION\keypadTest.c
 
 APPLICATION\LCDTest.c
@@ -37,4 +39,6 @@ MCAL\ADC.c
 MCAL\DIO.c
 
 MCAL\DIO_Lcfg.c
+
+MCAL\EXI.c
 

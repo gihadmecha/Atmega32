@@ -158,9 +158,28 @@ extern u8 ADC_Read_periodCheck (u16* pdata)
 	}
 }
 
+extern void ADC_interruptEnable (void)
+{
+	SET_BIT(ADCSRA, ADIE);
+}
+
+extern u16 ADC_Read_interrupt ()
+{
+	readFlag = 1;
+	
+	//READING
+	//from atmega32 datasheet: if ADLAR = 0
+	//return ( *((unsigned short* )&ADCL) );
+	return ADC;
+	
+	//adjusted left: from atmega32 datasheet: if ADLAR = 1
+	//return ADCH<<2;
+}
+
 extern signed int ADC_GetVolt(ADC_Channel_type channel)
 {
 	u16 read = ADC_Read_polling(channel);
 	//note atmega32 int = 2 bytes = u16 !!
 	return ( ( (u32)read * VREF ) / 1024);
 }
+
