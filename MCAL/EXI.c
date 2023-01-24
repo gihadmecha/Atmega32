@@ -53,10 +53,10 @@ extern void EXI_INT2Init(EXI_INT2_interruptRequest_type change)
 	switch (change)
 	{
 		case EXI_INT2_FALLING_EDGE:
-		CLR_BIT(MCUCR, ISC11);
+		CLR_BIT(MCUCR, ISC2);
 		break;
 		case EXI_INT2_RAISING_EDGE:
-		SET_BIT(MCUCR, ISC10);
+		SET_BIT(MCUCR, ISC2);
 		break;
 	}
 }

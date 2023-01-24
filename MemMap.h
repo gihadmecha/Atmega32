@@ -69,14 +69,14 @@
 /******************************VECTOR_TABLE**************************************/
 
 #define		ADC_VECTOR		__vector_17
-#define		INT0_VECTOR		__Vector_2
-#define		INT1_VECTOR		__Vector_3
-#define		INT2_VECTOR		__Vector_4
+#define		INT0_VECTOR		__vector_1
+#define		INT1_VECTOR		__vector_2
+#define		INT2_VECTOR		__vector_3
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/
 
-#define		ISR(vector)		void vector (void) __attribute__((signal));\
+#define		ISR(vector)		void vector (void)__attribute__((signal));\
 							void vector (void)
 				
 #define		sei()			__asm__ __volatile__ ("sei" ::)

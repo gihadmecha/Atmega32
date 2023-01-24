@@ -264,9 +264,6 @@
     <Compile Include="MCAL\EXI.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\EXI_Lcfg.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="MemMap.h">
       <SubType>compile</SubType>
     </Compile>
