@@ -1,6 +1,13 @@
 
 #include "ADC.h"
 
+static void (*FPTR)(void) = NULLPTR;
+
+void ADC_setCallBack (void(*localPTR)(void))
+{
+	FPTR = localPTR;
+}
+
 extern void ADC_Init(ADC_Vref_type Vref, ADC_Scaler_type prescaler, ADC_Accuracy_type accuracy)
 {
 	//Vref
@@ -181,5 +188,13 @@ extern signed int ADC_GetVolt(ADC_Channel_type channel)
 	u16 read = ADC_Read_polling(channel);
 	//note atmega32 int = 2 bytes = u16 !!
 	return ( ( (u32)read * VREF ) / 1024);
+}
+
+ISR (ADC_VECTOR)
+{
+	if (FPTR)
+	{
+		FPTR();
+	}
 }
 

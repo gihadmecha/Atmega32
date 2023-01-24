@@ -40,6 +40,7 @@ typedef enum{
 	ADC_HIGHACCURACY
 	}ADC_Accuracy_type;
 	
+void ADC_setCallBack (void(*localPTR)(void));
 extern void ADC_Init (ADC_Vref_type , ADC_Scaler_type , ADC_Accuracy_type accuracy);
 extern void ADC_Enable();
 extern void ADC_Disable();

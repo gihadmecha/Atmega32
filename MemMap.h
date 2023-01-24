@@ -72,14 +72,17 @@
 #define		INT0_VECTOR		__vector_1
 #define		INT1_VECTOR		__vector_2
 #define		INT2_VECTOR		__vector_3
+#define		BAD_VECTOR		__vector_default
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/
 
 #define		ISR(vector)		void vector (void)__attribute__((signal));\
 							void vector (void)
-				
+			
 #define		sei()			__asm__ __volatile__ ("sei" ::)
+
+#define		CLI()			__asm__ __volatile__ ("CLI" ::)
 
 
 #endif /* MEMMAP_H_ */

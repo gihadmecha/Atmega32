@@ -1,6 +1,31 @@
 
 #include "EXI.h"
 
+static void (*FPTR_INT0)(void) = NULLPTR;
+static void (*FPTR_INT1)(void) = NULLPTR;
+static void (*FPTR_INT2)(void) = NULLPTR;
+static void (*FPTR_badInterrupt)(void) = NULLPTR;
+
+void EXI_INT0SetCallBack (void (*localPTR)(void))
+{
+	FPTR_INT0 = localPTR;
+}
+
+void EXI_INT1SetCallBack (void (*localPTR)(void))
+{
+	FPTR_INT1 = localPTR;
+}
+
+void EXI_INT2SetCallBack (void (*localPTR)(void))
+{
+	FPTR_INT2 = localPTR;
+}
+
+void EXI_badInterruptSetCallBack (void (*localPTR)(void))
+{
+	FPTR_badInterrupt = localPTR;
+}
+
 
 extern void EXI_INT0Init(EXI_interruptRequest_type change)
 {
@@ -48,14 +73,14 @@ extern void EXI_INT1Init(EXI_interruptRequest_type change)
 	}
 }
 
-extern void EXI_INT2Init(EXI_INT2_interruptRequest_type change)
+extern void EXI_INT2Init(EXI_interruptRequest_type change)
 {
 	switch (change)
 	{
-		case EXI_INT2_FALLING_EDGE:
+		case EXI_FALLING_EDGE:
 		CLR_BIT(MCUCR, ISC2);
 		break;
-		case EXI_INT2_RAISING_EDGE:
+		case EXI_RAISING_EDGE:
 		SET_BIT(MCUCR, ISC2);
 		break;
 	}
@@ -90,3 +115,38 @@ extern void EXI_INT2Disable ()
 {
 	CLR_BIT(GICR, INT2);
 }
+
+
+ISR(INT0_VECTOR)
+{
+	if (FPTR_INT0)
+	{
+		FPTR_INT0();
+	}
+}
+
+ISR(INT1_VECTOR)
+{
+	if (FPTR_INT1)
+	{
+		FPTR_INT1();
+	}
+}
+
+ISR(INT2_VECTOR)
+{
+	if (FPTR_INT2)
+	{
+		FPTR_INT2();
+	}
+}
+
+ISR(BAD_VECTOR)
+{
+	if (FPTR_badInterrupt)
+	{
+		FPTR_badInterrupt();
+	}
+}
+
+
