@@ -1,15 +1,13 @@
 
 
-#include "EXITest.h"
+#include  "TIMER0Test.h"
 
 
 
 int main()
 {
 	
-	
-	
-	EXITest ();
+	TIMER0Test();
 	
 	
 }

@@ -165,6 +165,12 @@
     <Compile Include="APPLICATION\stepperTest.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APPLICATION\TIMER0Test.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APPLICATION\TIMER0Test.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\KEYPAD.c">
       <SubType>compile</SubType>
     </Compile>
@@ -262,6 +268,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\EXI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER0.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER0.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MemMap.h">

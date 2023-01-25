@@ -16,6 +16,8 @@ APPLICATION\segmentsTest.c
 
 APPLICATION\stepperTest.c
 
+APPLICATION\TIMER0Test.c
+
 HAL\KEYPAD.c
 
 HAL\LCD.c
@@ -41,4 +43,6 @@ MCAL\DIO.c
 MCAL\DIO_Lcfg.c
 
 MCAL\EXI.c
+
+MCAL\TIMER0.c
 

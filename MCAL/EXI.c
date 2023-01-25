@@ -141,12 +141,12 @@ ISR(INT2_VECTOR)
 	}
 }
 
-ISR(BAD_VECTOR)
-{
-	if (FPTR_badInterrupt)
-	{
-		FPTR_badInterrupt();
-	}
-}
+//ISR(BAD_VECTOR)
+//{
+	//if (FPTR_badInterrupt)
+	//{
+		//FPTR_badInterrupt();
+	//}
+//}
 
 

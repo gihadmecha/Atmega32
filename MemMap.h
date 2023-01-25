@@ -65,14 +65,22 @@
 #define		INTF1		7
 #define		INTF2		5
 
+/***********************************TIMER0********************************************/
+
+#define		TCCR0		( *(volatile unsigned short* )0x53)
+#define		TCNT0		( *(volatile unsigned short* )0x52)
+#define		TIMSK		( *(volatile unsigned short* )0x59)
+#define		TIOE0		0
+
 
 /******************************VECTOR_TABLE**************************************/
 
-#define		ADC_VECTOR		__vector_17
-#define		INT0_VECTOR		__vector_1
-#define		INT1_VECTOR		__vector_2
-#define		INT2_VECTOR		__vector_3
-#define		BAD_VECTOR		__vector_default
+#define		ADC_VECTOR			__vector_17
+#define		INT0_VECTOR			__vector_1
+#define		INT1_VECTOR			__vector_2
+#define		INT2_VECTOR			__vector_3
+#define		BAD_VECTOR			__vector_default
+#define		TIMER0_OVF_vect		__vector_11
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/
