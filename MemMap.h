@@ -68,9 +68,22 @@
 /***********************************TIMER0********************************************/
 
 #define		TCCR0		( *(volatile unsigned short* )0x53)
+#define		COM01		5
+#define		COM00		4
+#define		WGM01		3
+#define		WGM00		6
+#define		CS00		0
+#define		CS01		1
+#define		CS02		2
+
 #define		TCNT0		( *(volatile unsigned short* )0x52)
+
 #define		TIMSK		( *(volatile unsigned short* )0x59)
-#define		TIOE0		0
+#define		TOIE0		0
+#define		OCIE0		1
+
+#define		OCR0		( *(volatile unsigned short* )0x5C)
+
 
 
 /******************************VECTOR_TABLE**************************************/
@@ -81,6 +94,7 @@
 #define		INT2_VECTOR			__vector_3
 #define		BAD_VECTOR			__vector_default
 #define		TIMER0_OVF_vect		__vector_11
+#define		TIMER0_OC_vect		__vector_10
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/
