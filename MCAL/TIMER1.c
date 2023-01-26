@@ -1,0 +1,303 @@
+
+#include "TIMER1.h"
+
+static void (*OVERFLOWPOINTER)(void) = NULLPTR;
+static void (*COMPAREMATCHA)(void) = NULLPTR;
+static void (*COMPAREMATCHB)(void) = NULLPTR;
+static void (*INPUTCAPTURE)(void) = NULLPTR;
+static void (*badInterruptPointer)(void) = NULLPTR;
+
+extern void TIMER1_overFlowINterruptSetCaller (void (*localPointer)(void))
+{
+	OVERFLOWPOINTER = localPointer;
+}
+
+extern void TIMER1_compareMatch1AINterruptSetCaller (void (*localPointer)(void))
+{
+	COMPAREMATCHA = localPointer;
+}
+
+extern void TIMER1_compareMatch1BINterruptSetCaller (void (*localPointer)(void))
+{
+	COMPAREMATCHB = localPointer;
+}
+
+extern void TIMER1_InputCaptureINterruptSetCaller (void (*localPointer)(void))
+{
+	INPUTCAPTURE = localPointer;
+}
+
+extern void TIMER1_badInterruptSetCallBack (void (*localPointer)(void))
+{
+	badInterruptPointer = localPointer;
+}
+
+extern void TIMER1_Init (TIMER1_MODE timerMode, TIMER1_prescaler_type prescaler)
+{
+	switch (timerMode)
+	{
+	case TIMER1_NORMAL_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_PHASE_CORRECT_8BIT_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_PHASE_CORRECT_9BIT_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_PHASE_CORRECT_10BIT_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_CTC_OCR1A_TOP_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_FAST_PWM_8BIT_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_FAST_PWM_9BIT_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_FAST_PWM_10BIT_MODE:
+	CLR_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_PHASE_FREQUENCY_CORRECT_ICR1_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_PHASE_FREQUENCY_CORRECT_OCR1A_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_PHASE_CORRECT_ICR1_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	case TIMER1_PHASE_CORRECT_OCR1A_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	CLR_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_CTC_ICR1_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	CLR_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_FAST_PWM_ICR1_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	CLR_BIT(TCCR1A, WGM10);
+	break;
+	case TIMER1_FAST_PWM_OCR1A_TOP_MODE:
+	SET_BIT(TCCR1B, WGM13);
+	SET_BIT(TCCR1B, WGM12);
+	SET_BIT(TCCR1A, WGM11);
+	SET_BIT(TCCR1A, WGM10);
+	break;
+	}
+	
+	// tickTime = 1 us		->		timer frequency = 1 MHZ		->		prescaler = 8
+	switch (prescaler)
+	{
+	case TIMER1_STOP:
+	CLR_BIT(TCCR1B, CS12);
+	CLR_BIT(TCCR1B, CS11);
+	CLR_BIT(TCCR1B, CS10);
+	break;
+	case TIMER1_PRESCALER_1:
+	CLR_BIT(TCCR1B, CS12);
+	CLR_BIT(TCCR1B, CS11);
+	SET_BIT(TCCR1B, CS10);
+	break;
+	case TIMER1_PRESCALER_8:
+	CLR_BIT(TCCR1B, CS12);
+	SET_BIT(TCCR1B, CS11);
+	CLR_BIT(TCCR1B, CS10);
+	break;
+	case TIMER1_PRESCALER_64:
+	CLR_BIT(TCCR1B, CS12);
+	SET_BIT(TCCR1B, CS11);
+	SET_BIT(TCCR1B, CS10);
+	break;
+	case TIMER1_PRESCALER_256:
+	SET_BIT(TCCR1B, CS12);
+	CLR_BIT(TCCR1B, CS11);
+	CLR_BIT(TCCR1B, CS10);
+	break;
+	case TIMER1_PRESCALER_1024:
+	SET_BIT(TCCR1B, CS12);
+	CLR_BIT(TCCR1B, CS11);
+	SET_BIT(TCCR1B, CS10);
+	break;
+	}
+}
+
+extern void TIMER1_OC1AMode (TIMER1_OC1Mode_type OC1AMode)
+{
+	switch (OC1AMode)
+	{
+	case TIMER1_OC1_DISCONNECTED:
+	CLR_BIT(TCCR1A,COM1A1);
+	CLR_BIT(TCCR1A,COM1A0);
+	break;
+	case TIMER1_OC1_TOGGLE:
+	CLR_BIT(TCCR1A,COM1A1);
+	SET_BIT(TCCR1A,COM1A0);
+	break;
+	case TIMER1_OC1_CLEAR:
+	SET_BIT(TCCR1A,COM1A1);
+	CLR_BIT(TCCR1A,COM1A0);
+	break;
+	case TIMER1_OC1_SET:
+	SET_BIT(TCCR1A,COM1A1);
+	SET_BIT(TCCR1A,COM1A0);
+	break;
+	}
+}
+
+extern void TIMER1_OC1BMode (TIMER1_OC1Mode_type OC1BMode)
+{
+	switch (OC1BMode)
+	{
+		case TIMER1_OC1_DISCONNECTED:
+		CLR_BIT(TCCR1A,COM1B1);
+		CLR_BIT(TCCR1A,COM1B0);
+		break;
+		case TIMER1_OC1_TOGGLE:
+		CLR_BIT(TCCR1A,COM1B1);
+		SET_BIT(TCCR1A,COM1B0);
+		break;
+		case TIMER1_OC1_CLEAR:
+		SET_BIT(TCCR1A,COM1B1);
+		CLR_BIT(TCCR1A,COM1B0);
+		break;
+		case TIMER1_OC1_SET:
+		SET_BIT(TCCR1A,COM1B1);
+		SET_BIT(TCCR1A,COM1B0);
+		break;
+	}
+}
+
+extern void TIMER1_ICU_Edge (TIMER1_ICU_Edge_type edge)
+{
+	switch (edge)
+	{
+		case TIMER1_ICU_RAISING:
+		SET_BIT(TCCR1B,ICES1);
+		break;
+		case TIMER1_ICU_FALLING:
+		CLR_BIT(TCCR1B,ICES1);
+		break;
+	}
+}
+
+extern void TIMER1_OverflowInterrupt_Enable ()
+{
+	SET_BIT(TIMSK, TOIE1);
+}
+
+extern void TIMER1_OverflowInterrupt_Disable ()
+{
+	CLR_BIT(TIMSK, TOIE1);
+}
+
+extern void TIMER1_CompareMatch1AInterrupt_Enable ()
+{
+	SET_BIT(TIMSK, OCIE1A);
+}
+
+extern void TIMER1_CompareMatch1AInterrupt_Disable ()
+{
+	CLR_BIT(TIMSK, OCIE1A);
+}
+
+extern void TIMER1_CompareMatch1BInterrupt_Enable ()
+{
+	SET_BIT(TIMSK, OCIE1B);
+}
+
+extern void TIMER1_CompareMatch1BInterrupt_Disable ()
+{
+	CLR_BIT(TIMSK, OCIE1B);
+}
+
+extern void TIMER1_InputCaptureInterrupt_Enable ()
+{
+	SET_BIT(TIMSK, TICIE1);
+}
+
+extern void TIMER1_InputCaptureInterrupt_Disable ()
+{
+	CLR_BIT(TIMSK, TICIE1);
+}
+
+ISR(TIMER1_OVF_vect)
+{
+	if (OVERFLOWPOINTER)
+	{
+		OVERFLOWPOINTER ();
+	}
+}
+
+ISR(TIMER1_OC1A_vect)
+{
+	if (COMPAREMATCHA)
+	{
+		COMPAREMATCHA ();
+	}
+}
+
+ISR(TIMER1_OC1B_vect)
+{
+	if (COMPAREMATCHB)
+	{
+		COMPAREMATCHB ();
+	}
+}
+
+ISR(TIMER1_IC1_vect)
+{
+	if (INPUTCAPTURE)
+	{
+		INPUTCAPTURE ();
+	}
+}
+//ISR(BAD_VECTOR)
+//{
+	//if (badInterruptPointer)
+	//{
+		//badInterruptPointer();
+	//}
+//}
+

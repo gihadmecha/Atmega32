@@ -46,28 +46,28 @@
 
 /***********************************EXI********************************************/
 
-#define		MCUCR		( *(volatile unsigned short* )0x55)
+#define		MCUCR		( *(volatile unsigned char* )0x55)
 #define		ISC11		3
 #define		ISC10		2
 #define		ISC01		1
 #define		ISC00		0
 
-#define		MCUCSR		( *(volatile unsigned short* )0x54)
+#define		MCUCSR		( *(volatile unsigned char* )0x54)
 #define		ISC2		6
 
-#define		GICR		( *(volatile unsigned short* )0x5B)
+#define		GICR		( *(volatile unsigned char* )0x5B)
 #define		INT0		6
 #define		INT1		7
 #define		INT2		5
 
-#define		GIFR		( *(volatile unsigned short* )0x5A)
+#define		GIFR		( *(volatile unsigned char* )0x5A)
 #define		INTF0		6
 #define		INTF1		7
 #define		INTF2		5
 
 /***********************************TIMER0********************************************/
 
-#define		TCCR0		( *(volatile unsigned short* )0x53)
+#define		TCCR0		( *(volatile unsigned char* )0x53)
 #define		COM01		5
 #define		COM00		4
 #define		WGM01		3
@@ -76,15 +76,55 @@
 #define		CS01		1
 #define		CS02		2
 
-#define		TCNT0		( *(volatile unsigned short* )0x52)
+#define		TCNT0		( *(volatile unsigned char* )0x52)
 
-#define		TIMSK		( *(volatile unsigned short* )0x59)
+#define		TIMSK		( *(volatile unsigned char* )0x59)
 #define		TOIE0		0
 #define		OCIE0		1
 
-#define		OCR0		( *(volatile unsigned short* )0x5C)
+#define		OCR0		( *(volatile unsigned char* )0x5C)
 
 
+/***********************************TIMER1********************************************/
+
+#define		TCCR1A		( *(volatile unsigned char* )0x4F)
+#define		COM1A1		7
+#define		COM1A0		6
+#define		COM1B1		5
+#define		COM1B0		4
+#define		WGM11		1
+#define		WGM10		0
+
+#define		TCCR1B		( *(volatile unsigned char* )0x4E)
+#define		WGM13		4
+#define		WGM12		3
+#define		CS12		2
+#define		CS11		1
+#define		CS10		0
+#define		ICES1		6
+
+
+#define		TCNT1H		( *(volatile unsigned char* )0x4D)
+#define		TCNT1L		( *(volatile unsigned char* )0x4C)
+
+#define		TIMSK		( *(volatile unsigned char* )0x59)
+#define		TOIE1		2
+#define		OCIE1A		4
+#define		OCIE1B		3
+#define		TICIE1		5
+
+
+#define		OCR1AH		( *(volatile unsigned char* )0x4B)
+#define		OCR1AL		( *(volatile unsigned char* )0x4A)
+#define		OCR1A		( *(volatile unsigned short* )0x4A)
+
+#define		OCR1BH		( *(volatile unsigned char* )0x49)
+#define		OCR1BL		( *(volatile unsigned char* )0x48)
+#define		OCR1B		( *(volatile unsigned short* )0x48)
+
+#define		ICR1H		( *(volatile unsigned char* )0x47)
+#define		ICR1L		( *(volatile unsigned char* )0x46)
+#define		ICR1		( *(volatile unsigned short* )0x46)
 
 /******************************VECTOR_TABLE**************************************/
 
@@ -95,6 +135,10 @@
 #define		BAD_VECTOR			__vector_default
 #define		TIMER0_OVF_vect		__vector_11
 #define		TIMER0_OC_vect		__vector_10
+#define		TIMER1_OVF_vect		__vector_9
+#define		TIMER1_OC1A_vect	__vector_7
+#define		TIMER1_OC1B_vect	__vector_8
+#define		TIMER1_IC1_vect		__vector_6
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/
@@ -105,6 +149,9 @@
 #define		sei()			__asm__ __volatile__ ("sei" ::)
 
 #define		CLI()			__asm__ __volatile__ ("CLI" ::)
+
+
+
 
 
 #endif /* MEMMAP_H_ */

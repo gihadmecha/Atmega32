@@ -1,0 +1,14 @@
+
+#include "TIMER1Test.h"
+
+extern void TIMER1Test ()
+{
+	DIO_Init();
+	TIMER1_Init(TIMER1_FAST_PWM_ICR1_TOP_MODE,  TIMER1_PRESCALER_8);
+	TIMER1_OC1AMode(TIMER1_OC1_SET);
+	TIMER1_OC1BMode(TIMER1_OC1_CLEAR);
+	TIMER1_TopSet_ICFree(1000);
+	TIMER1_CompareUnit1ASet(99);
+	TIMER1_CompareUnit1BSet(99);
+	
+}
