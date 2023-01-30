@@ -1,13 +1,13 @@
 
 
-#include  "TIMER1Test.h"
+#include  "UARTTest.h"
 
 
 
 int main()
 {
 	
-	TIMER1Test();
+	UARTTest();
 	
 	
 }

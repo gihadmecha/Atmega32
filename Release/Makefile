@@ -50,6 +50,7 @@ C_SRCS +=  \
 ../APPLICATION/stepperTest.c \
 ../APPLICATION/TIMER0Test.c \
 ../APPLICATION/TIMER1Test.c \
+../APPLICATION/UARTTest.c \
 ../HAL/KEYPAD.c \
 ../HAL/LCD.c \
 ../HAL/LM35.c \
@@ -64,7 +65,8 @@ C_SRCS +=  \
 ../MCAL/DIO_Lcfg.c \
 ../MCAL/EXI.c \
 ../MCAL/TIMER0.c \
-../MCAL/TIMER1.c
+../MCAL/TIMER1.c \
+../MCAL/UART.c
 
 
 PREPROCESSING_SRCS += 
@@ -83,6 +85,7 @@ APPLICATION/segmentsTest.o \
 APPLICATION/stepperTest.o \
 APPLICATION/TIMER0Test.o \
 APPLICATION/TIMER1Test.o \
+APPLICATION/UARTTest.o \
 HAL/KEYPAD.o \
 HAL/LCD.o \
 HAL/LM35.o \
@@ -97,7 +100,8 @@ MCAL/DIO.o \
 MCAL/DIO_Lcfg.o \
 MCAL/EXI.o \
 MCAL/TIMER0.o \
-MCAL/TIMER1.o
+MCAL/TIMER1.o \
+MCAL/UART.o
 
 OBJS_AS_ARGS +=  \
 APPLICATION/ADCTest.o \
@@ -109,6 +113,7 @@ APPLICATION/segmentsTest.o \
 APPLICATION/stepperTest.o \
 APPLICATION/TIMER0Test.o \
 APPLICATION/TIMER1Test.o \
+APPLICATION/UARTTest.o \
 HAL/KEYPAD.o \
 HAL/LCD.o \
 HAL/LM35.o \
@@ -123,7 +128,8 @@ MCAL/DIO.o \
 MCAL/DIO_Lcfg.o \
 MCAL/EXI.o \
 MCAL/TIMER0.o \
-MCAL/TIMER1.o
+MCAL/TIMER1.o \
+MCAL/UART.o
 
 C_DEPS +=  \
 APPLICATION/ADCTest.d \
@@ -135,6 +141,7 @@ APPLICATION/segmentsTest.d \
 APPLICATION/stepperTest.d \
 APPLICATION/TIMER0Test.d \
 APPLICATION/TIMER1Test.d \
+APPLICATION/UARTTest.d \
 HAL/KEYPAD.d \
 HAL/LCD.d \
 HAL/LM35.d \
@@ -149,7 +156,8 @@ MCAL/DIO.d \
 MCAL/DIO_Lcfg.d \
 MCAL/EXI.d \
 MCAL/TIMER0.d \
-MCAL/TIMER1.d
+MCAL/TIMER1.d \
+MCAL/UART.d
 
 C_DEPS_AS_ARGS +=  \
 APPLICATION/ADCTest.d \
@@ -161,6 +169,7 @@ APPLICATION/segmentsTest.d \
 APPLICATION/stepperTest.d \
 APPLICATION/TIMER0Test.d \
 APPLICATION/TIMER1Test.d \
+APPLICATION/UARTTest.d \
 HAL/KEYPAD.d \
 HAL/LCD.d \
 HAL/LM35.d \
@@ -175,7 +184,8 @@ MCAL/DIO.d \
 MCAL/DIO_Lcfg.d \
 MCAL/EXI.d \
 MCAL/TIMER0.d \
-MCAL/TIMER1.d
+MCAL/TIMER1.d \
+MCAL/UART.d
 
 OUTPUT_FILE_PATH +=atmega32.elf
 
@@ -248,6 +258,13 @@ APPLICATION/TIMER0Test.o: ../APPLICATION/TIMER0Test.c
 	
 
 APPLICATION/TIMER1Test.o: ../APPLICATION/TIMER1Test.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+APPLICATION/UARTTest.o: ../APPLICATION/UARTTest.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -353,6 +370,13 @@ MCAL/TIMER0.o: ../MCAL/TIMER0.c
 	
 
 MCAL/TIMER1.o: ../MCAL/TIMER1.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/UART.o: ../MCAL/UART.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

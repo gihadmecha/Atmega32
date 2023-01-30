@@ -126,6 +126,30 @@
 #define		ICR1L		( *(volatile unsigned char* )0x46)
 #define		ICR1		( *(volatile unsigned short* )0x46)
 
+
+/******************************UART**************************************/
+
+#define		UBRRL		( *(volatile unsigned char* )0x29)
+#define		UCSRA		( *(volatile unsigned char* )0x2B)
+#define		U2X			1
+#define		UCSRB		( *(volatile unsigned char* )0x2A)
+#define		RXCIE		7
+#define		TXCIE		6
+#define		RXEN		4
+#define		UCSZ2		2
+#define		TXEN		3
+#define		UCSRC		( *(volatile unsigned char* )0x40)
+#define		URSEL		7
+#define		UMSEL		6
+#define		UPM0		4
+#define		UPM1		5
+#define		USBS		3
+#define		UCSZ0		1
+#define		UCSZ1		2
+#define		UDR		( *(volatile unsigned char* )0x2C)
+
+
+
 /******************************VECTOR_TABLE**************************************/
 
 #define		ADC_VECTOR			__vector_17
