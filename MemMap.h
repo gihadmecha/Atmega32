@@ -132,6 +132,8 @@
 #define		UBRRL		( *(volatile unsigned char* )0x29)
 #define		UCSRA		( *(volatile unsigned char* )0x2B)
 #define		U2X			1
+#define		UDRE		5
+#define		RXC			7
 #define		UCSRB		( *(volatile unsigned char* )0x2A)
 #define		RXCIE		7
 #define		TXCIE		6
@@ -152,17 +154,18 @@
 
 /******************************VECTOR_TABLE**************************************/
 
-#define		ADC_VECTOR			__vector_17
-#define		INT0_VECTOR			__vector_1
-#define		INT1_VECTOR			__vector_2
-#define		INT2_VECTOR			__vector_3
-#define		BAD_VECTOR			__vector_default
-#define		TIMER0_OVF_vect		__vector_11
-#define		TIMER0_OC_vect		__vector_10
-#define		TIMER1_OVF_vect		__vector_9
-#define		TIMER1_OC1A_vect	__vector_7
-#define		TIMER1_OC1B_vect	__vector_8
-#define		TIMER1_IC1_vect		__vector_6
+#define		ADC_VECTOR				__vector_17
+#define		INT0_VECTOR				__vector_1
+#define		INT1_VECTOR				__vector_2
+#define		INT2_VECTOR				__vector_3
+#define		BAD_VECTOR				__vector_default
+#define		TIMER0_OVF_vect			__vector_11
+#define		TIMER0_OC_vect			__vector_10
+#define		TIMER1_OVF_vect			__vector_9
+#define		TIMER1_OC1A_vect		__vector_7
+#define		TIMER1_OC1B_vect		__vector_8
+#define		TIMER1_IC1_vect			__vector_6
+#define		UART_RXCOMPLETE_vect	__vector_13
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/

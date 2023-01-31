@@ -1,0 +1,13 @@
+SERVICES/UART_SERVICES.d SERVICES/UART_SERVICES.o: \
+ ../SERVICES/UART_SERVICES.c ../SERVICES/UART_SERVICES.h ../MCAL/UART.h \
+ ../StdTypes.h ../MemMap.h ../UTILS.h
+
+../SERVICES/UART_SERVICES.h:
+
+../MCAL/UART.h:
+
+../StdTypes.h:
+
+../MemMap.h:
+
+../UTILS.h:

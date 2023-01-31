@@ -1,6 +1,15 @@
 
 #include "UART.h"
 
+static void (*RXCOMPLETE)(void) = NULLPTR;
+
+static u8 initFlag = 0;
+
+extern void UART_RXCompleteInterrupt_setCallBack (void (*localPointer)(void))
+{
+	RXCOMPLETE = localPointer;
+}
+
 extern void UART_Init (/*baundRate, mode, speedMode, parity, noOfDataBits, noOfStopBits*/)
 {
 	
@@ -34,7 +43,7 @@ extern void UART_Init (/*baundRate, mode, speedMode, parity, noOfDataBits, noOfS
 	//edit: let user to choice no. of stop bits
 	SET_BIT(UCSRC, URSEL);
 	
-	
+	initFlag = 1;
 }
 
 extern void UART_ReceiverEnable ()
@@ -57,7 +66,61 @@ extern void UART_transmitterDisable ()
 	CLR_BIT(UCSRB, TXEN);
 }
 
-extern void UART_Send (u8 data)
+extern u8 UART_Send (u8 data)
 {
-	UDR = data;
+	if (initFlag)
+	{
+		while(READ_BIT(UCSRA, UDRE) == 0);
+		UDR = data;
+		return 1;
+	}
+	
+	return 0;
+}
+
+
+extern u8 UART_Receive_busyWait ()
+{
+	while(READ_BIT(UCSRA, RXC) == 0);
+	return UDR;
+}
+
+extern u8 UART_Receive_periodicCheck (u8* pdata)
+{
+	if (READ_BIT(UCSRA, RXC) == 1)
+	{
+		*pdata = UDR;
+		return 1;
+	}
+	
+	return 0;
+}
+
+extern u8 UART_Receive_interrupt (u8* pdata)
+{
+	if (READ_BIT(UCSRA, RXC) == 1)
+	{
+		*pdata = UDR;
+		return 1;
+	}
+	
+	return 0;
+}
+
+
+extern void UART_RXCompleteInterrupt_Enable ()
+{
+	SET_BIT(UCSRB, RXCIE);
+}
+extern void UART_RXCompleteInterrupt_Disable ()
+{
+	CLR_BIT(UCSRB, RXCIE);
+}
+
+ISR (UART_RXCOMPLETE_vect)
+{
+	if (RXCOMPLETE)
+	{
+		RXCOMPLETE();
+	}
 }
