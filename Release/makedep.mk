@@ -14,6 +14,8 @@ APPLICATION\motorTest.c
 
 APPLICATION\segmentsTest.c
 
+APPLICATION\SPITest.c
+
 APPLICATION\stepperTest.c
 
 APPLICATION\TIMER0Test.c
@@ -47,6 +49,8 @@ MCAL\DIO.c
 MCAL\DIO_Lcfg.c
 
 MCAL\EXI.c
+
+MCAL\SPI.c
 
 MCAL\TIMER0.c
 

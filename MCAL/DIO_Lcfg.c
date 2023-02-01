@@ -14,10 +14,10 @@ const DIO_PinStatus_type PinsStatusArray[] = {
 	OUTPUT, //PINB1
 	INPULL, //PINB2
 	OUTPUT, //PINB3
-	OUTPUT, //PINB4
-	OUTPUT, //PINB5
-	OUTPUT, //PINB6
-	OUTPUT, //PINB7
+	OUTPUT, //PINB4//ss
+	OUTPUT, //PINB5//mosi
+	INFREE, //PINB6//miso
+	OUTPUT, //PINB7//clk
 	OUTPUT, //PINC0
 	OUTPUT, //PINC1
 	OUTPUT, //PINC2
