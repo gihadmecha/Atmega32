@@ -2,12 +2,18 @@
 #include "UART.h"
 
 static void (*RXCOMPLETE)(void) = NULLPTR;
+static void (*TXCOMPLETE)(void) = NULLPTR;
 
 static u8 initFlag = 0;
 
 extern void UART_RXCompleteInterrupt_setCallBack (void (*localPointer)(void))
 {
 	RXCOMPLETE = localPointer;
+}
+
+extern void UART_TXCompleteInterrupt_setCallBack (void (*localPointer)(void))
+{
+	TXCOMPLETE = localPointer;
 }
 
 extern void UART_Init (/*baundRate, mode, speedMode, parity, noOfDataBits, noOfStopBits*/)
@@ -78,6 +84,10 @@ extern u8 UART_Send (u8 data)
 	return 0;
 }
 
+extern void UART_send_interrupt (u8 data)
+{
+	UDR = data;
+}
 
 extern u8 UART_Receive_busyWait ()
 {
@@ -96,15 +106,9 @@ extern u8 UART_Receive_periodicCheck (u8* pdata)
 	return 0;
 }
 
-extern u8 UART_Receive_interrupt (u8* pdata)
+extern u8 UART_Receive_interrupt ()
 {
-	if (READ_BIT(UCSRA, RXC) == 1)
-	{
-		*pdata = UDR;
-		return 1;
-	}
-	
-	return 0;
+	return UDR;
 }
 
 
@@ -117,10 +121,27 @@ extern void UART_RXCompleteInterrupt_Disable ()
 	CLR_BIT(UCSRB, RXCIE);
 }
 
+extern void UART_TXCompleteInterrupt_Enable ()
+{
+	SET_BIT(UCSRB, TXCIE);
+}
+extern void UART_TXCompleteInterrupt_Disable ()
+{
+	CLR_BIT(UCSRB, TXCIE);
+}
+
 ISR (UART_RXCOMPLETE_vect)
 {
 	if (RXCOMPLETE)
 	{
 		RXCOMPLETE();
+	}
+}
+
+ISR (UART_TXCOMPLETE_vect)
+{
+	if (TXCOMPLETE)
+	{
+		TXCOMPLETE();
 	}
 }

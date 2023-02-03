@@ -3,15 +3,13 @@
 #include "UARTTest.h"
 
 
-static u8 receivedData[100];
+static volatile u8 receivedData[100];
 static u8 index = 0;
 
 void receive ()
 {
-	if (UART_Receive_interrupt (receivedData + index))
-	{
-		index++;
-	}
+	receivedData[index] = UART_Receive_interrupt ();
+	index++;
 }
 
 extern void UARTTest ()
@@ -23,8 +21,9 @@ extern void UARTTest ()
 	UART_transmitterEnable ();
 	UART_ReceiverEnable ();
 	
-	UART_RXCompleteInterrupt_Enable();
-	UART_RXCompleteInterrupt_setCallBack(receive);
+	sei();
+	UART_BCM_Init ();
+	
 	
 	//UART_Send ('A');
 	//UART_Send ('B');
@@ -39,14 +38,43 @@ extern void UARTTest ()
 	//UART_Send ('C');
 	
 	
-	unsigned char x;
-	unsigned char i;
-    u8 charindex = 0;
+	//unsigned char x;
+	//unsigned char i;
+    //u8 charindex = 0;
 	u8 string[16];
+	u8 string2[20];
+	u8 counter = 0;
+	u8 writeIndex = 0;
 	
 
+	UART_SendStringAsynchronous("Ahmed");
+	UART_SendStringAsynchronous("mohamed");
+	UART_receiveStringAsynchronous (string);
+	UART_receiveStringAsynchronous (string2);
+	
 	while (1)
 	{
+		UART_BCM_Runnable (string);
+		LCD_GoTo(1,0);
+		LCD_WriteString(string);
+		LCD_GoTo(1,7);
+		LCD_WriteString(string2);
+		LCD_GoTo(0,0);
+		LCD_WriteNumber(counter);
+		counter++;
+		_delay_ms(500);
+		if (counter == 10)
+		{
+			counter = 0;
+		}
+		
+		//if (writeIndex < index)
+		//{
+			//LCD_GoTo(1,writeIndex);
+			//LCD_WriteChar(receivedData[writeIndex]);
+			//writeIndex++;
+		//}
+		
 		//x = UART_Receive_busyWait ();
 		//LCD_WriteChar(x);
 		//if (UART_Receive_periodicCheck(&x))
@@ -60,9 +88,9 @@ extern void UARTTest ()
 			//}
 		//}
 		
-		UART_receiveString(string);
-		LCD_WriteString(string);
-		UART_sendStringCheckSum(string);
+		//UART_receiveString(string);
+		//LCD_WriteString(string);
+		//UART_sendStringCheckSum(string);
 	
 		//UART_Send ('C');
 		
@@ -72,7 +100,7 @@ extern void UARTTest ()
 			//LCD_WriteChar(receivedData[charindex]);
 		//}
 		
-		_delay_ms(1000);
+		//_delay_ms(1000);
 			
 	}
 	

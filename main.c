@@ -1,13 +1,13 @@
 
 
-#include  "SPITest.h"
+#include  "UARTTest.h"
 
 
 
 int main()
 {
 	
-	SPITest();
+	UARTTest ();
 	
 	
 }

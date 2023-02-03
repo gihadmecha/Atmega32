@@ -180,6 +180,7 @@
 #define		TIMER1_OC1B_vect		__vector_8
 #define		TIMER1_IC1_vect			__vector_6
 #define		UART_RXCOMPLETE_vect	__vector_13
+#define		UART_TXCOMPLETE_vect	__vector_15
 
 
 /******************************INTERRUPPT_ATTRRIBUTES****************************************/
