@@ -69,6 +69,7 @@ C_SRCS +=  \
 ../MCAL/TIMER0.c \
 ../MCAL/TIMER1.c \
 ../MCAL/UART.c \
+../SERVICES/TIMER0_SERVICES.c \
 ../SERVICES/UART_SERVICES.c
 
 
@@ -107,6 +108,7 @@ MCAL/SPI.o \
 MCAL/TIMER0.o \
 MCAL/TIMER1.o \
 MCAL/UART.o \
+SERVICES/TIMER0_SERVICES.o \
 SERVICES/UART_SERVICES.o
 
 OBJS_AS_ARGS +=  \
@@ -138,6 +140,7 @@ MCAL/SPI.o \
 MCAL/TIMER0.o \
 MCAL/TIMER1.o \
 MCAL/UART.o \
+SERVICES/TIMER0_SERVICES.o \
 SERVICES/UART_SERVICES.o
 
 C_DEPS +=  \
@@ -169,6 +172,7 @@ MCAL/SPI.d \
 MCAL/TIMER0.d \
 MCAL/TIMER1.d \
 MCAL/UART.d \
+SERVICES/TIMER0_SERVICES.d \
 SERVICES/UART_SERVICES.d
 
 C_DEPS_AS_ARGS +=  \
@@ -200,6 +204,7 @@ MCAL/SPI.d \
 MCAL/TIMER0.d \
 MCAL/TIMER1.d \
 MCAL/UART.d \
+SERVICES/TIMER0_SERVICES.d \
 SERVICES/UART_SERVICES.d
 
 OUTPUT_FILE_PATH +=atmega32.elf
@@ -406,6 +411,13 @@ MCAL/TIMER1.o: ../MCAL/TIMER1.c
 	
 
 MCAL/UART.o: ../MCAL/UART.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION" -I"../SERVICES"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+SERVICES/TIMER0_SERVICES.o: ../SERVICES/TIMER0_SERVICES.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL" -I".." -I"../HAL" -I"../APPLICATION" -I"../SERVICES"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -101,6 +101,8 @@ extern void TIMER0_OCMode (TIMER0_OCMode_type OCMode)
 	}
 }
 
+
+
 extern void TIMER0_OverflowInterrupt_Enable ()
 {
 	SET_BIT(TIMSK, TOIE0);
@@ -121,6 +123,7 @@ extern void TIMER0_CompareMatchInterrupt_Disable ()
 	CLR_BIT(TIMSK, OCIE0);
 }
 
+
 ISR(TIMER0_OVF_vect)
 {
 	if (OVERFLOWPOINTER)
@@ -128,6 +131,7 @@ ISR(TIMER0_OVF_vect)
 		OVERFLOWPOINTER ();
 	}
 }
+
 
 ISR(TIMER0_OC_vect)
 {

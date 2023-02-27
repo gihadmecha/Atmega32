@@ -1,0 +1,16 @@
+SERVICES/TIMER0_SERVICES.d SERVICES/TIMER0_SERVICES.o: \
+ ../SERVICES/TIMER0_SERVICES.c ../SERVICES/TIMER0_SERVICES.h \
+ ../MCAL/TIMER0.h ../StdTypes.h ../MemMap.h ../UTILS.h \
+ ../MCAL/TIMER0_Lcfg.h
+
+../SERVICES/TIMER0_SERVICES.h:
+
+../MCAL/TIMER0.h:
+
+../StdTypes.h:
+
+../MemMap.h:
+
+../UTILS.h:
+
+../MCAL/TIMER0_Lcfg.h:

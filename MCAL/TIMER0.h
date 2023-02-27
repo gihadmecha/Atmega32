@@ -8,6 +8,8 @@
 #include "MemMap.h"
 #include "UTILS.h"
 
+#include "TIMER0_Lcfg.h"
+
 typedef enum{
 	TIMER0_NORMAL_MODE,
 	TIMER0_PHASE_CORRECT_MODE,
@@ -24,17 +26,20 @@ typedef enum{
 	}TIMER0_OCMode_type;
 	
 typedef enum{
-	TIMER0_STOP,
+	TIMER0_STOP = 0,
 	TIMER0_PRESCALER_1,
-	TIMER0_PRESCALER_8,
+	TIMER0_PRESCALER_8 = 2,
 	TIMER0_PRESCALER_64,
 	TIMER0_PRESCALER_256,
 	TIMER0_PRESCALER_1024
 }TIMER0_prescaler_type;
 
 
-#define		TIMER0_Set(value)				TCNT0 = value
-#define		TIMER0_CompareUnitSet(value)	OCR0 = value
+#define		TIMER0_TCNT0Set(value)				TCNT0 = value
+#define		TIMER0_CompareUnitSet(value)		OCR0 = value
+
+#define		TIMER0_TCNTRead()					TCNT0
+#define		TIMER0_OCR0Read()					OCR0
 
 extern void TIMER0_overFlowINterruptSetCaller (void (*localPointer)(void));
 extern void TIMER0_compareMatchINterruptSetCaller (void (*localPointer)(void));

@@ -301,6 +301,9 @@
     <Compile Include="MCAL\TIMER0.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\TIMER0_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\TIMER1.c">
       <SubType>compile</SubType>
     </Compile>
@@ -314,6 +317,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MemMap.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICES\TIMER0_SERVICES.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICES\TIMER0_SERVICES.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="SERVICES\UART_SERVICES.c">

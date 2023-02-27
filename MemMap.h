@@ -87,6 +87,8 @@
 
 /***********************************TIMER1********************************************/
 
+
+
 #define		TCCR1A		( *(volatile unsigned char* )0x4F)
 #define		COM1A1		7
 #define		COM1A0		6
@@ -106,6 +108,8 @@
 
 #define		TCNT1H		( *(volatile unsigned char* )0x4D)
 #define		TCNT1L		( *(volatile unsigned char* )0x4C)
+
+#define		TCNT1		( *(volatile unsigned short* )0x4C)
 
 #define		TIMSK		( *(volatile unsigned char* )0x59)
 #define		TOIE1		2

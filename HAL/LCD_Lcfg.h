@@ -4,8 +4,8 @@
 #define LCD_LCFG_H_
 
 #define		LCD_PORT	    PC
-#define		LCD_RS			PIND3
-#define		LCD_EN			PIND4
+#define		LCD_RS			PIND0
+#define		LCD_EN			PIND1
 
 
 
